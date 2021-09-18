@@ -1,0 +1,37 @@
+.navbar-item-custom a{
+    color : #b58e4a;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+  }
+
+  .bg-black{
+      background-color: black;
+  }
+
+  .navbar-dark{
+    color : #b58e4a!important; 
+  }
+
+  .gold{
+    color : #b58e4a!important;
+    border-color:#b58e4a ;
+  }
+
+  .footer-custom{
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: black;
+      padding-top: 10px;
+      color: #b58e4a!important;
+  }
+
+  .footer-custom p{
+  margin: 0;
+  padding: 0;
+}
+
