@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Panier - Mighty Mama Créa'{% endblock %}
+
+{% block content %}
+    <h1>Mon Panier</h1>
+
+    <p>Retrouvez l'ensemble des produits que vous avez ajouté à votre panier.</p>
+
+    <table class="table mt-3">
+        <thead>
+          <tr>
+            
+            <th scope="col">Produit</th>
+            <th scope="col"></th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix Unitaire</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% set total = null %}
+            {% for product in cart %}
+          <tr>
+              
+            <th><img src="/uploads/{{product.product.illustration}}"  height="75px" alt="{{product.product.name}}"></th>
+            <td>{{product.product.name}}</td>
+            <td> x{{product.quantity}}</td>
+            <td>{{(product.product.price/100)|number_format(2, '.', ',')}} €</td>
+            <td>{{((product.product.price) * product.quantity /100)|number_format(2, '.', ',')}} €</td>
+          </tr>
+          {% set total = total +(product.product.price * product.quantity) %}
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="text-right mb-5">
+          <b>Nombre de Produits : {{cart|length}} </b> <br>
+          <b> Total de mon panier: {{(total /100)|number_format(2, '.', ',')}} €</b> 
+          <a href="" class="btn btn-success btn-block mt-3">Valider mon panier</a>
+      </div>
+{% endblock %}
