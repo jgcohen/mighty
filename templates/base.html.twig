@@ -38,35 +38,35 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-md  navbar-item-custom fixed-top bg-black">
-				<a class="navbar-brand" href="/">  <img src="/assets/logod.png" alt="" class="img-fluid logo"></a>
+				<a class="navbar-brand" href="/"> Mighty Mama Créa'</a>
 				<button class="navbar-toggler gold" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon gold"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav mr-auto ">
-						<li class="nav-item active ">
+						<li class="nav-item ">
 							<a class="nav-link " href="/nos-produits">La Boutique
 								<span class="sr-only">(current)</span>
 							</a>
                             </li>
-                            <li class="nav-item active ">
+                            <li class="nav-item  ">
                             <a class="nav-link " href="/">Qui suis-je?
 								<span class="sr-only">(current)</span>
 							</a>
                             </li>
-                            <li class="nav-item active ">
+                            <li class="nav-item  ">
                             <a class="nav-link " href="/">Points de vente
 								<span class="sr-only">(current)</span>
 							</a>
                             </li>
-                            <li class="nav-item active ">
+                            <li class="nav-item  ">
                              <a class="nav-link " href="/">Evenements
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
-                        <li class="nav-item active ">
-                             <a class="nav-link " href="/">Contact
-								<span class="sr-only">(current)</span>
+                        <li class="nav-item  ">
+                             <a class="nav-link " href="/mon-panier">Contact
+								<img src="{{ asset('assets/img/shopping-cart.png')}}" class="cart-icon" alt="Mon panier">
 							</a>
 						</li>
 					</ul>
@@ -74,7 +74,7 @@
 						{% if app.user %}
 							<a class="nav-link" href="/compte">Mon Compte<small> ({{app.user.firstname}})</small><span class="sr-only">(current)</span>
 							</a>
-							|
+							
 							<a class="nav-link" href="/deconnexion">Déconnexion
 								<span class="sr-only">(current)</span>
 							</a>
@@ -82,13 +82,14 @@
 							<a class="nav-link" href="/connexion">Connexion
 								<span class="sr-only">(current)</span>
 							</a>
-							|
+							
 							<a class="nav-link" href="/inscription">Inscription
 								<span class="sr-only">(current)</span>
 							</a>
 						{% endif %}
 					
 				</div>
+				
 			</nav>
 		</header>
 

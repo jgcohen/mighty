@@ -38,7 +38,7 @@ class SearchType extends AbstractType
         ->add('submit', SubmitType::class,[
             'label' =>'Filtrer',
             'attr' =>[
-                'class' => 'btn-block btn-info'
+                'class' => 'btn-block btn-gold'
             ]
         ])
      ;   

@@ -7,7 +7,7 @@ body{
 }
 
 .logo {
-  height: 100px;
+  height: 50px;
   width: auto;
 }
 
@@ -27,11 +27,12 @@ body{
 .footer-custom {
   text-align: center;
   position: absolute;
-  bottom: 0;
+  bottom: -1;
   width: 100%;
   background-color: black;
   padding-top: 10px;
   color: #b58e4a !important;
+  margin-top: 100px;
 }
 
 .footer-custom p {
@@ -66,4 +67,26 @@ body{
 
 .product-single-price{
   font-size: 19px;
+}
+
+.btn-gold{
+  border: #b58e4a;
+  border: solid;
+  color: #b58e4a;
+  border-width: 2px
+}
+
+.btn-gold:hover{
+background-color: #b58e4a;
+color: white;
+}
+
+.cart-icon{
+  height: 21px;
+  padding-left: 20px;
+}
+
+.block-small{
+  max-width: 600px;
+  margin: 0 auto;
 }

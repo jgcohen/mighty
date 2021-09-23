@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes adresses - Mighty Mama Créa'{% endblock %}
+
+{% block content %}
+<a class="btn btn-gold btn-sm float-right" href="{{path('add_account_address')}}">Ajouter une adresse</a>
+<h1>Mes adresses</h1>
+<p> Bienvenue {{app.user.firstname}}.<br/>
+C'est dans cet espace que vous allez pouvoir gérer toutes vos adresses</p>
+<hr>
+{% if app.user.addresses|length == 0 %}
+<p class="text-center" >Vous n'avez pas encore ajouté d'adresses à votre compte client. 
+    Pour en ajouter une veuillez <a href="{{path('add_account_address')}}">cliquer ici</a>
+</p>
+
+{% else %}
+<div class="row">
+{% for address in app.user.addresses %}
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{address.name}}</h5>
+              <p class="card-text">{{address.address}}, <br>
+                {{address.postal}}-{{address.city}}-{{address.country}}</p>
+              <a href="{{path('edit_account_address',{id:address.id})}}" class="btn btn-info">Modifier</a>
+              <a href="{{path('delete_account_address',{id:address.id})}}" class="btn btn-danger">Supprimer</a>
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<a class="mb-5" href="{{path('account')}}">Retour</a><br/>
+{% endblock %}
