@@ -1,4 +1,9 @@
-{% extends 'base.html.twig' %} {% block title %}Paiement de ma commande - Mighty
+{% extends 'base.html.twig' %} 
+{% block javascript %}
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %} 
+{% block title %}Paiement de ma commande - Mighty
 Mama Créa'{% endblock %} {% block content %}
 <h2>Mon Récapitulatif</h2>
 <p>Vérifiez vos informations avant de payer votre commande</p>
@@ -15,7 +20,7 @@ Mama Créa'{% endblock %} {% block content %}
     <div class="form-check">
       {{ carrier.name }} <br />
       {{ carrier.description }} <br />
-      {{carrier.price|number_format(2, ',', '.')}}
+      {{carrier.price|number_format(2, ',', '.')}}€
     </div>
   </div>
   <div class="col-md-6">
@@ -64,7 +69,14 @@ Mama Créa'{% endblock %} {% block content %}
       <strong>Total:</strong>
       {{((total /100) + carrier.price)|number_format(2, ',', '.')}} €
     </p>
-    <a href="" class="btn btn-gold btn-block mt-3">Payer {{((total /100) + carrier.price)|number_format(2, ',', '.')}} €</a>
+    <form action="/commande/create-session/{{reference}}" method="POST">
+
+        <button class="btn btn-gold btn-block" type="submit" id="checkout-button">Payer {{((total /100) + carrier.price)|number_format(2, ',', '.')}} €</button>
+
+      </form>
+    {# <a id="checkout-button" class="btn btn-gold btn-block mt-3">Payer {{((total /100) + carrier.price)|number_format(2, ',', '.')}} €</a> #}
   </div>
 </div>
+
 {% endblock %}
+
