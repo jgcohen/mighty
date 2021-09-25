@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Merci pour votre commande - Mighty
+Mama Créa'{% endblock %}
+
+{% block content %}
+<h1>Merci pour votre commande</h1>
+<p>Bonjour <strong>{{order.user.firstname}} {{order.user.lastname}}</strong> , <br>
+    Nous vous remercions pour votre commande<strong> n°{{order.reference}} </strong> <br>
+    Une confirmation vient de vous être envoyée par l'email à l'adresse <strong>{{order.user.email}}</strong>,
+    <hr>
+    Votre commande sera livrée par <strong>{{order.carrierName}} </strong>à l'adresse suivante: <br>
+    {{order.delivery|raw}}
+    <hr>
+
+    Pour suivre votre commande, rendez-vous dans votre <a href="/compte">compte</a>
+</p>
+
+{% endblock %}

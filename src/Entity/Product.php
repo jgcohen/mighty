@@ -53,6 +53,11 @@ class Product
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $secondIllustration;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +143,18 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSecondIllustration(): ?string
+    {
+        return $this->secondIllustration;
+    }
+
+    public function setSecondIllustration(?string $secondIllustration): self
+    {
+        $this->secondIllustration = $secondIllustration;
 
         return $this;
     }
