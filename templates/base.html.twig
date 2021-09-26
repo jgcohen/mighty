@@ -13,8 +13,7 @@
 		</title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
-		{% block javascript %}{% endblock %} 
+		<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet"> {% block javascript %}{% endblock %}
 		<style>
 			.bd-placeholder-img {
 				font-size: 1.125rem;
@@ -37,10 +36,70 @@
 	</head>
 	<body>
 		<header>
+			{# <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+							<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon "></span>
+							</button>
+							  <div class="collapse navbar-collapse"></div>
+							<div class="collapse navbar-collapse" id="navbarCollapse">
+								<ul class="navbar-nav mr-auto ">
+									<li class="nav-item ">
+										<a class="nav-link " href="/">Home
+											<span class="sr-only">(current)</span>
+										</a>
+			                            </li>
+									<li class="nav-item ">
+										<a class="nav-link " href="/nos-produits">La Boutique
+											<span class="sr-only">(current)</span>
+										</a>
+			                            </li>
+			                            <li class="nav-item  ">
+			                            <a class="nav-link " href="/">Qui suis-je?
+											<span class="sr-only">(current)</span>
+										</a>
+			                            </li>
+			                            <li class="nav-item  ">
+			                            <a class="nav-link " href="/">Points de vente
+											<span class="sr-only">(current)</span>
+										</a>
+			                            </li>
+			                            <li class="nav-item  ">
+			                             <a class="nav-link " href="/">Evenements
+											<span class="sr-only">(current)</span>
+										</a>
+									</li>
+			                        <li class="nav-item  ">
+			                             <a class="nav-link " href="/mon-panier">Contact
+											<img src="{{ asset('assets/img/shopping-cart.png')}}" class="cart-icon" alt="Mon panier">
+										</a>
+									</li>
+								</ul>
+								
+									{% if app.user %}
+										<a class="nav-link" href="/compte">Mon Compte<small> ({{app.user.firstname}})</small><span class="sr-only">(current)</span>
+										</a>
+										
+										<a class="nav-link" href="/deconnexion">Déconnexion
+											<span class="sr-only">(current)</span>
+										</a>
+									{% else %}
+										<a class="nav-link" href="/connexion">Connexion
+											<span class="sr-only">(current)</span>
+										</a>
+										
+										<a class="nav-link" href="/inscription">Inscription
+											<span class="sr-only">(current)</span>
+										</a>
+									{% endif %}
+								
+							</div>
+							
+						</nav> #}
 			<nav class="navbar navbar-expand-md  navbar-item-custom fixed-top bg-black">
-				<a class="navbar-brand" href="/"> Mighty Mama Créa'</a>
-				<button class="navbar-toggler gold" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon gold"></span>
+				<a class="navbar-brand" href="/">
+					Mighty Mama Créa'</a>
+				<button class=" navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon gold">Menu</span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav mr-auto ">
@@ -48,48 +107,50 @@
 							<a class="nav-link " href="/nos-produits">La Boutique
 								<span class="sr-only">(current)</span>
 							</a>
-                            </li>
-                            <li class="nav-item  ">
-                            <a class="nav-link " href="/">Qui suis-je?
-								<span class="sr-only">(current)</span>
-							</a>
-                            </li>
-                            <li class="nav-item  ">
-                            <a class="nav-link " href="/">Points de vente
-								<span class="sr-only">(current)</span>
-							</a>
-                            </li>
-                            <li class="nav-item  ">
-                             <a class="nav-link " href="/">Evenements
+						</li>
+						<li class="nav-item  ">
+							<a class="nav-link " href="/">Qui suis-je?
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
-                        <li class="nav-item  ">
-                             <a class="nav-link " href="/mon-panier">Contact
+						<li class="nav-item  ">
+							<a class="nav-link " href="/">Points de vente
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item  ">
+							<a class="nav-link " href="/">Evenements
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item  ">
+							<a class="nav-link " href="/mon-panier">Contact
 								<img src="{{ asset('assets/img/shopping-cart.png')}}" class="cart-icon" alt="Mon panier">
 							</a>
 						</li>
 					</ul>
-					
-						{% if app.user %}
-							<a class="nav-link" href="/compte">Mon Compte<small> ({{app.user.firstname}})</small><span class="sr-only">(current)</span>
-							</a>
-							
-							<a class="nav-link" href="/deconnexion">Déconnexion
-								<span class="sr-only">(current)</span>
-							</a>
-						{% else %}
-							<a class="nav-link" href="/connexion">Connexion
-								<span class="sr-only">(current)</span>
-							</a>
-							
-							<a class="nav-link" href="/inscription">Inscription
-								<span class="sr-only">(current)</span>
-							</a>
-						{% endif %}
-					
+
+					{% if app.user %}
+						<a class="nav-link" href="/compte">Mon Compte<small>
+								({{app.user.firstname}})</small>
+							<span class="sr-only">(current)</span>
+						</a>
+
+						<a class="nav-link" href="/deconnexion">Déconnexion
+							<span class="sr-only">(current)</span>
+						</a>
+					{% else %}
+						<a class="nav-link" href="/connexion">Connexion
+							<span class="sr-only">(current)</span>
+						</a>
+
+						<a class="nav-link" href="/inscription">Inscription
+							<span class="sr-only">(current)</span>
+						</a>
+					{% endif %}
+
 				</div>
-				
+
 			</nav>
 		</header>
 
@@ -97,47 +158,24 @@
 			{% if block('carousel') is defined %}
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
+					{% for key,header in headers  %}
+						<li data-target="#myCarousel" data-slide-to="{{key}}" {% if key == 0 %} class="active" {% endif %} ></li>
+					 {% endfor %}
 					</ol>
 					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
-							<div class="container">
-								<div class="carousel-caption text-left">
-									<h1>Example headline.</h1>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-									<p>
-										<a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
-									</p>
+						{% for key,header in headers  %}
+							<div class="carousel-item {% if key == 0 %}active{% endif %}" style="background: url('/uploads/{{header.illustration}}'); background-size:cover ;"">
+								<div class="container">
+									<div class="carousel-caption text-left">
+										<h1>{{header.title}}</h1>
+										<p>{{header.content}}</p>
+										<p>
+											<a class="btn btn-lg btn-gold" href="{{header.btnUrl}}" role="button">{{header.btnTitle}}</a>
+										</p>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="carousel-item">
-							<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
-							<div class="container">
-								<div class="carousel-caption">
-									<h1>Another example headline.</h1>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-									<p>
-										<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="carousel-item">
-							<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
-							<div class="container">
-								<div class="carousel-caption text-right">
-									<h1>One more for good measure.</h1>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-									<p>
-										<a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a>
-									</p>
-								</div>
-							</div>
-						</div>
+						{% endfor %}
 					</div>
 					<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -151,25 +189,28 @@
 			{% endif %}
 
 
-			<!-- Marketing messaging and featurettes
-			    ================================================== -->
-			<!-- Wrap the rest of the page in another container to center all the content. -->
-
 			<div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %} "> {% block content %}{% endblock %}
 
 				</div>
-				<!-- /.container -->
+
 
 				<!-- FOOTER -->
 				<footer class="footer-custom no-gutters">
-					
-					<p><small> Mighty Mama Créa' <br>
-                     Créations personnalisées et vente d'une graphiste / illustratrice dévouée et passionnée
-					</small></p>
-                    <p><small> Site crée par Jonathan Cohen :
-                     <a href="https://phanios.fr/">
-                        Phanios.fr</a>
-					</small></p>
+
+					<p>
+						<small>
+							Mighty Mama Créa'
+							<br>
+							Créations personnalisées et vente d'une graphiste / illustratrice dévouée et passionnée
+						</small>
+					</p>
+					<p>
+						<small>
+							Site crée par Jonathan Cohen :
+							<a href="https://phanios.fr/">
+								Phanios.fr</a>
+						</small>
+					</p>
 				</footer>
 			</main>
 			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -177,4 +218,4 @@
 		</body>
 
 		{% block script %}{% endblock %}
-			</html>
+	</html>

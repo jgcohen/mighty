@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié- Mighty Mama Créa'
+{% endblock %}
+
+{% block content %}
+	<div class="block-small">
+		{% for message in app.flashes('notice') %}
+        <div class="alert alert-info">
+            {{message}}
+        </div>
+        {% endfor %}
+		<form method="post">
+
+			<h1 class="h3 mb-3 font-weight-normal">Reinitialiser mon mot de passe</h1>
+			<label for="inputEmail">Votre E-mail</label>
+			<input type="email" name="email" id="inputEmail" class="form-control" placeholder="E-Mail" autocomplete="email" required autofocus>
+
+			<button class="btn btn-lg btn-gold btn-block mt-3 mb-5" type="submit">
+				Valider
+			</button>
+			<hr>
+			<p class="text-center">Ou souhaitez vous
+				<a href="/connexion">vous connecter</a>
+				?
+			</p>
+		</form>
+	</div>
+{% endblock %}

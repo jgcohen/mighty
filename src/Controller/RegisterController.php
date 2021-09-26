@@ -41,13 +41,20 @@ class RegisterController extends AbstractController
             
                 $user->setPassword($password);
                
+                $search_email = $this->entityManager->getRepository(User::class)->findOneBy(array('email'=>$user->getEmail()));
+               if(!$search_email){
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
 
-                // $mail = new Mail();
-                // $mail->send("Bienvenue sur A-Ka","welcome Arthur");
+                $content = "Bonjour ".$user->getFirstname()."<br/>Ton compte est bien crée, tu peux te connecter des maintenant";
+                  $mail = new Mail();
+                  $mail->send($user->getEmail(), $user->getFirstname()," Bienvenue sur la boutique de MightyMamaCréa",$content);
 
                 $notification = "Inscription effectuée";
+               }else{
+                $notification = "Adresse E-mail déja utilisée"; 
+               }
+                
             
 
         }

@@ -1,44 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{product.name}} - Mighty Mama Créa'{% endblock %}
+{% block title %}
+	{{product.name}}
+	- Mighty Mama Créa'
+{% endblock %}
 
 {% block content %}
 
 
-<div class="row product-container">
-    <div class="col-md-5">
-        <img src="/uploads/{{product.illustration}}" alt="{{product.name}}" class="img-fluid">
+	<div class="row product-container">
+		<div class="col-md-5">
+			<img src="/uploads/{{product.illustration}}" alt="{{product.name}}" class="img-fluid">
 
-    </div>
-    <div class="col-md-7">
-        <div class="product-item ">
-            <h5>{{product.name}}</h4>
-                <span class="product-subtitle">{{product.subtitle}}</span>
-                <span class="product-single-price">{{(product.price/100)|number_format(2, '.', ',')}} €</span>
-                <hr>
-                <p>{{product.description}}</p>
-                <a href="{{path('add_to_cart',{'id' : product.id})}}" class="btn btn-gold">Ajouter au panier</a>
-        </div>
-    </div>
-    <div class="text-center pt-4">
-        <img src="{% if product.category == 'Mug Personnalisé' %}{{asset('assets/bmug.jpg')}}
-{% elseif product.category == 'Impression Tissu' %}{{asset('assets/billu.jpg')}}
-{% else %}
-{{asset('assets/bcard.jpg')}}
-{% endif %}" alt="" class="  w-50 mt-4 img-fluid ">
-<h2 class=" p-5">Vous pourriez aussi aimer: </h2>
-    </div>
-    <div class="row">
-        {% for pro in products %}
-        {% if (pro.category == product.category) and (pro.name != product.name) %}
-        <div class="col-4">
-            <a href="{{path('product',{'slug':pro.slug})}}"><img src="/uploads/{{pro.illustration}}" alt="{{pro.name}}"
-                    class="img-fluid w-75">
-            </a>
-            <p>{{pro.name}}</p>
-        </div>
-        {% endif %}
-        {% endfor %}
-    </div>
-</div>
+		</div>
+		<div class="col-md-7">
+			<div class="product-item ">
+				<h5>{{product.name}}</h4>
+				<span class="product-subtitle">{{product.subtitle}}</span>
+				<span class="product-single-price">{{(product.price/100)|number_format(2, '.', ',')}}
+					€</span>
+				<hr>
+				<p>{{product.description}}</p>
+				<a href="{{path('add_to_cart',{'id' : product.id})}}" class="btn btn-gold">Ajouter au panier</a>
+			</div>
+		</div>
+		<div class="text-center pt-4">
+			<img src="{% if product.category == 'Mug Personnalisé' %}{{asset('assets/bmug.jpg')}} {% elseif product.category == 'Impression Tissu' %}{{asset('assets/billu.jpg')}} {% else %} {{asset('assets/bcard.jpg')}} {% endif %}" alt="" class="  w-50 mt-4 img-fluid ">
+			<h2 class=" p-5">Vous pourriez aussi aimer:
+			</h2>
+		</div>
+		<div class="row">
+			{% for pro in products %}
+				{% if (pro.category == product.category) and (pro.name != product.name) %}
+					<div class="col-4">
+						<a href="{{path('product',{'slug':pro.slug})}}"><img src="/uploads/{{pro.illustration}}" alt="{{pro.name}}" class="img-fluid w-75">
+						</a>
+						<p>{{pro.name}}</p>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}

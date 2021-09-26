@@ -7,6 +7,10 @@
 <p> Bienvenue {{app.user.firstname}}.<br/>
 C'est dans cet espace que vous allez pouvoir gérer toutes vos informations</p>
 
+{% if is_granted('ROLE_ADMIN') %}
+<a class="mb-5" href="/admin">L'administration</a><br/>
+{% endif %}
 <a class="mb-5" href="{{path('account_password')}}">Modifier mon mot de passe</a><br/>
 <a class="mb-5" href="{{path('account_address')}}">Gerer mes adresses</a><br/>
+<a class="mb-5" href="{{path('account_order')}}">Mes commandes</a>
 {% endblock %}

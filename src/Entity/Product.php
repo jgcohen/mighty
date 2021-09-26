@@ -58,6 +58,11 @@ class Product
      */
     private $secondIllustration;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isBest;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +160,18 @@ class Product
     public function setSecondIllustration(?string $secondIllustration): self
     {
         $this->secondIllustration = $secondIllustration;
+
+        return $this;
+    }
+
+    public function getIsBest(): ?bool
+    {
+        return $this->isBest;
+    }
+
+    public function setIsBest(bool $isBest): self
+    {
+        $this->isBest = $isBest;
 
         return $this;
     }

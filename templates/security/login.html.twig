@@ -14,6 +14,12 @@
                 Vous etes connecté en tant que : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
             </div>
         {% endif %}
+
+        	{% for message in app.flashes('notice') %}
+			<div class="alert alert-info">
+				{{message}}
+			</div>
+		{% endfor %}
     
         <h1 class="h3 mb-3 font-weight-normal">Merci de vous connecter</h1>
         <label for="inputEmail">Votre E-mail</label>
@@ -31,6 +37,7 @@
             Se connecter
         </button>
         <hr>
+        <p class="text-center" ><a href="/mot-de-passe-oublie">Mot de passe oublié</a> ? </p>
         <p class="text-center" >Ou souhaitez vous <a href="/inscription">creer un compte</a> ? </p>
     </form>
 </div>
