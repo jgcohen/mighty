@@ -151,7 +151,7 @@ class Order
      */
     public function getOrderDetails(): Collection
     {
-        return $this->orderDetails;
+        return $this->orderDetails; 
     }
 
     public function addOrderDetail(OrderDetails $orderDetail): self

@@ -36,65 +36,6 @@
 	</head>
 	<body>
 		<header>
-			{# <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-							<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon "></span>
-							</button>
-							  <div class="collapse navbar-collapse"></div>
-							<div class="collapse navbar-collapse" id="navbarCollapse">
-								<ul class="navbar-nav mr-auto ">
-									<li class="nav-item ">
-										<a class="nav-link " href="/">Home
-											<span class="sr-only">(current)</span>
-										</a>
-			                            </li>
-									<li class="nav-item ">
-										<a class="nav-link " href="/nos-produits">La Boutique
-											<span class="sr-only">(current)</span>
-										</a>
-			                            </li>
-			                            <li class="nav-item  ">
-			                            <a class="nav-link " href="/">Qui suis-je?
-											<span class="sr-only">(current)</span>
-										</a>
-			                            </li>
-			                            <li class="nav-item  ">
-			                            <a class="nav-link " href="/">Points de vente
-											<span class="sr-only">(current)</span>
-										</a>
-			                            </li>
-			                            <li class="nav-item  ">
-			                             <a class="nav-link " href="/">Evenements
-											<span class="sr-only">(current)</span>
-										</a>
-									</li>
-			                        <li class="nav-item  ">
-			                             <a class="nav-link " href="/mon-panier">Contact
-											<img src="{{ asset('assets/img/shopping-cart.png')}}" class="cart-icon" alt="Mon panier">
-										</a>
-									</li>
-								</ul>
-								
-									{% if app.user %}
-										<a class="nav-link" href="/compte">Mon Compte<small> ({{app.user.firstname}})</small><span class="sr-only">(current)</span>
-										</a>
-										
-										<a class="nav-link" href="/deconnexion">Déconnexion
-											<span class="sr-only">(current)</span>
-										</a>
-									{% else %}
-										<a class="nav-link" href="/connexion">Connexion
-											<span class="sr-only">(current)</span>
-										</a>
-										
-										<a class="nav-link" href="/inscription">Inscription
-											<span class="sr-only">(current)</span>
-										</a>
-									{% endif %}
-								
-							</div>
-							
-						</nav> #}
 			<nav class="navbar navbar-expand-md  navbar-item-custom fixed-top bg-black">
 				<a class="navbar-brand" href="/">
 					Mighty Mama Créa'</a>
@@ -119,12 +60,16 @@
 							</a>
 						</li>
 						<li class="nav-item  ">
-							<a class="nav-link " href="/">Evenements
+							<a class="nav-link " href="/events">Evenements
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
 						<li class="nav-item  ">
-							<a class="nav-link " href="/mon-panier">Contact
+							<a class="nav-link " href="/">Contact
+							</a>
+						</li>
+						<li class="nav-item  ">
+							<a class="nav-link " href="/mon-panier">
 								<img src="{{ asset('assets/img/shopping-cart.png')}}" class="cart-icon" alt="Mon panier">
 							</a>
 						</li>
@@ -164,7 +109,7 @@
 					</ol>
 					<div class="carousel-inner">
 						{% for key,header in headers  %}
-							<div class="carousel-item {% if key == 0 %}active{% endif %}" style="background: url('/uploads/{{header.illustration}}'); background-size:cover ;"">
+							<div class="carousel-item {% if key == 0 %}active{% endif %}" style="background: url('/uploads/{{header.illustration}}'); background-size:cover ;">
 								<div class="container">
 									<div class="carousel-caption text-left">
 										<h1>{{header.title}}</h1>
@@ -213,6 +158,7 @@
 					</p>
 				</footer>
 			</main>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 			<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
 		</body>

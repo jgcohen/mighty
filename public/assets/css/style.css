@@ -106,3 +106,14 @@ color: white;
   padding: 20px;
   margin-top: 22px;
 }
+
+div{
+-webkit-transition: all .3s ease-in-out;
+-moz-transition: all .3s ease-in-out;
+transition: all .3s ease-in-out;
+}
+
+.img-events{
+  max-width: 50%;
+  height: auto;
+}

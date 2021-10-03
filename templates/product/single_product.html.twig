@@ -1,4 +1,4 @@
-<div class="product-item text-center">
+<div class="product-item text-center transi">
 	<a href="{{path('product',{'slug':product.slug})}}">
 		<img src="/uploads/{{product.illustration}}" alt="{{product.name}}" {% if product.secondIllustration %} onmouseover="this.src='/uploads/{{product.secondIllustration}} ';" onmouseout="this.src='/uploads/{{product.illustration}}';" {% endif %} class="img-fluid"></a>
 	<h5>{{product.name}}</h4>
