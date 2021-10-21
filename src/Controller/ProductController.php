@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\PaginatorInterface;
 
 class ProductController extends AbstractController
 {
@@ -22,7 +23,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/nos-produits", name="products")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
 
         
@@ -35,6 +36,12 @@ class ProductController extends AbstractController
             $products = $this->entityManager->getRepository(Product::class)->findAll();
 
         }
+
+        $products = $paginator->paginate(
+            $products,
+            $request->query->getInt('page',1),
+            9
+        );
         return $this->render('product/index.html.twig',[
             'products' => $products,
             'form' =>$form->createView()
