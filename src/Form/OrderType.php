@@ -25,14 +25,14 @@ class OrderType extends AbstractType
                 'expanded'=>true
             ])
 
-            ->add('carrieres',EntityType::class,[
-                'label_html'=> true,
-                'label'=>'Choisissez votre transporteur <br> (si votre commande comprend un mug, merci de choisir Colissimo)',
-                'required'=>true,
-                'class'=>Carrier::class,
-                'multiple'=>false,
-                'expanded'=>true
-            ])
+            // ->add('carrieres',EntityType::class,[
+            //     'label_html'=> true,
+            //     'label'=>'Choisissez votre transporteur <br> (si votre commande comprend un mug, merci de choisir Colissimo)',
+            //     'required'=>true,
+            //     'class'=>Carrier::class,
+            //     'multiple'=>false,
+            //     'expanded'=>true
+            // ])
 
             ->add('submit', SubmitType::class,[
                 'label'=>'Valider ma commande',

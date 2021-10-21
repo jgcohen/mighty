@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Product;
 
+
 class Cart
 
 {
@@ -72,7 +73,7 @@ class Cart
                 }
                 $cartComplete[] = [
                     'product' => $productObject,
-                    'quantity' => $quantity
+                    'quantity' => $quantity,             
                 ];
             }
         }

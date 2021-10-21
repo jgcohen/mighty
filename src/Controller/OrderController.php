@@ -4,8 +4,10 @@ namespace App\Controller;
 
 
 use App\Classe\Cart;
+use App\Entity\Carrier;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
+use App\Entity\Product;
 use App\Form\OrderType;
 use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,7 +54,6 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $date = new DateTimeImmutable();
-            $carriers = $form->get('carrieres')->getData();
             $delivery = $form->get('addresses')->getData();
             $delivery_content = $delivery->getFirstname() . ' ' . $delivery->getLastname();
             $delivery_content .= '<br/>' . $delivery->getPhone();
@@ -62,37 +63,53 @@ class OrderController extends AbstractController
             $delivery_content .= '<br/>' . $delivery->getAddress();
             $delivery_content .= '<br/>' . $delivery->getPostal() . ' ' . $delivery->getCity();
             $delivery_content .= '<br/>' . $delivery->getCountry();
-
-
+            
+            
             $order = new Order();
             $reference=$date->format('dmY').'-'.uniqid();
             $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
-            $order->setCarrierName($carriers->getName());
-            $order->setCarrierPrice($carriers->getPrice());
             $order->setDelivery($delivery_content);
             $order->setState(0);
             
             $this->entityManager->persist($order);
-        
+            $mug =false;
+         
             foreach ($cart->getFull() as $product) {
+                
+
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
                 $orderDetails->setProduct($product['product']->getName());
+                $thecategoryiamlookingfor= $this->entityManager->getRepository(Product::class)->findOneBy(array('name'=>$product['product']->getName()));
+                $anothercate= $thecategoryiamlookingfor->getCategory()->getId();
+             
+                if( $anothercate === 5){
+                    $mug = true;
+                }
                 $orderDetails->setQuantity($product['quantity']);
                 $orderDetails->setprice($product['product']->getPrice());
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
                 $this->entityManager->persist($orderDetails);
-
+                
             }
-           
-             $this->entityManager->flush();
+            
+            $carrierss= $this->entityManager->getRepository(Carrier::class)->findAll();
+            if($mug === true  ){
 
-           
-
-
-           
+                $carriers = $carrierss[0];
+            }else{
+                $carriers = $carrierss[1];
+            }
+            $order->setCarrierName($carriers->getName());
+            $order->setCarrierPrice($carriers->getPrice());
+            $this->entityManager->flush();
+            
+            
+            
+            
+            
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
