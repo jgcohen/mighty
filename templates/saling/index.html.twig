@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %} {% block title %}Ou nous trouver - Mighty Mama
+Créa' {% endblock %} {% block content %}
+<h1 class="mb-4">Ou nous trouver </h1>
+<br />
+
+{% for saling in salings %}
+
+<div class="row my-5">
+    <div class="col-3">
+        <div class="row">
+            <div class="col">
+                <img src="/uploads/{{ saling.illustration }}" alt="{{ saling.name }}" class="w-75" />
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <h5>{{ saling.name }}</h5>
+        
+    </div>
+    <div class="col-2">
+        <h5>{{ saling.address}}</h5>      
+    </div>
+    <div class="col-2">
+        <a class="btn btn-gold "href="{{path('singlesaling',{'id':saling.id})}}">En voir plus</a>
+     
+    </div>
+    
+</div>
+
+{% endfor %} {% endblock %}

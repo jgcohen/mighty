@@ -26,7 +26,8 @@ class OrderType extends AbstractType
             ])
 
             ->add('carrieres',EntityType::class,[
-                'label'=>'Choisissez votre transporteur',
+                'label_html'=> true,
+                'label'=>'Choisissez votre transporteur <br> (si votre commande comprend un mug, merci de choisir Colissimo)',
                 'required'=>true,
                 'class'=>Carrier::class,
                 'multiple'=>false,

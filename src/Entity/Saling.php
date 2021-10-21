@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\EventsRepository;
+use App\Repository\SalingRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=EventsRepository::class)
+ * @ORM\Entity(repositoryClass=SalingRepository::class)
  */
-class Events
+class Saling
 {
     /**
      * @ORM\Id
@@ -122,7 +122,7 @@ class Events
         return $this->thirdIllustration;
     }
 
-    public function setThirdIllustration(string $thirdIllustration): self
+    public function setThirdIllustration(?string $thirdIllustration): self
     {
         $this->thirdIllustration = $thirdIllustration;
 

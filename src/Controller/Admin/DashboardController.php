@@ -9,6 +9,7 @@ use App\Entity\Header;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Entity\Product;
+use App\Entity\Saling;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -43,6 +44,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Produits', 'fas fa-tag', Product::class);
         yield MenuItem::linkToCrud('Transporteur', 'fas fa-truck', Carrier::class);
         yield MenuItem::linkToCrud('Headers', 'fas fa-desktop', Header::class);
-        yield MenuItem::linkToCrud('Evenements', 'fas fa-desktop', Events::class);
+        yield MenuItem::linkToCrud('Evenements', 'fas fa-calendar-alt', Events::class);
+        yield MenuItem::linkToCrud('Points de vente', 'fas fa-euro-sign', Saling::class);
     }
 }
+

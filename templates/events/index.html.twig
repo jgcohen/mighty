@@ -6,36 +6,19 @@ Créa' {% endblock %} {% block content %}
 {% for event in events %}
 
 <div class="row my-5">
-
-    <!-- ////////////////////// -->
     <div class="col-3">
         <div class="row">
             <div class="col">
                 <img src="/uploads/{{ event.illustration }}" alt="{{ event.name }}" class="w-75" />
             </div>
-
-
-            <!-- <div class="col">
-                {% if event.secondIllustration %}
-
-                <img src="/uploads/{{ event.secondIllustration }}" alt="{{ event.name }}" class="w-100" />
-            </div>
-            {% endif %} {% if event.thirdIllustration %}
-
-            <div class="col">
-                <img src="/uploads/{{ event.thirdIllustration }}" alt="{{ event.name }}" class="w-100" />
-            </div>
-            {% endif %} -->
         </div>
     </div>
-    <!-- ////////////////////// -->
     <div class="col-2">
         <h5>{{ event.name }}</h5>
         
     </div>
     <div class="col-2">
-        <h5>{{ event.address}}</h5>
-        
+        <h5>{{ event.address}}</h5>      
     </div>
     <div class="col-2">
         <a class="btn btn-gold "href="{{path('event',{'id':event.id})}}">En voir plus</a>

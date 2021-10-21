@@ -1,27 +1,27 @@
 {% extends 'base.html.twig' %} {% block title %}Nos Evenements - Mighty Mama
 Créa' {% endblock %} {% block content %}
-<h1 class="mb-4">{{ event.name }}</h1>
+<h1 class="mb-4">{{ saling.name }}</h1>
 <br />
 
 <div class="row">
   <div class="col">
     <img
-      src="/uploads/{{ event.illustration }}"
-      alt="{{ event.name }}"
+      src="/uploads/{{ saling.illustration }}"
+      alt="{{ saling.name }}"
       class="w-100"
     />
   </div>
   <div class="col">
     <img
-      src="/uploads/{{ event.secondIllustration }}"
-      alt="{{ event.name }}"
+      src="/uploads/{{ saling.secondIllustration }}"
+      alt="{{ saling.name }}"
       class="w-100"
     />
   </div>
   <div class="col">
     <img
-      src="/uploads/{{ event.thirdIllustration }}"
-      alt="{{ event.name }}"
+      src="/uploads/{{ saling.thirdIllustration }}"
+      alt="{{ saling.name }}"
       class="w-100"
     />
   </div>
@@ -29,8 +29,8 @@ Créa' {% endblock %} {% block content %}
 
 <div class="row mt-5">
     <div class="col text-center">
-        <h5>{{ event.address}}</h5> 
-        <p>{{ event.longDescription}}</p>
+        <h5>{{ saling.address}}</h5> 
+        <p>{{ saling.longDescription}}</p>
     </div>
 </div>
 
