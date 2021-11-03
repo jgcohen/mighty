@@ -23,7 +23,7 @@ Créa'{% endblock %} {% block content %}
     </tr>
   </thead>
   <tbody>
-    {% for order in orders |sort((a, b) => b.createdAt <=> a.createdAt) %}
+    {% for order in app.user.orders |sort((a, b) => b.createdAt <=> a.createdAt) %}
     {% if order.state > 0 %}
     <tr>
       <td><span class="badge badge-secondary">{{order.reference}}</span> </td>

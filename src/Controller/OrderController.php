@@ -63,59 +63,69 @@ class OrderController extends AbstractController
             $delivery_content .= '<br/>' . $delivery->getAddress();
             $delivery_content .= '<br/>' . $delivery->getPostal() . ' ' . $delivery->getCity();
             $delivery_content .= '<br/>' . $delivery->getCountry();
-            
-            
+
+
             $order = new Order();
-            $reference=$date->format('dmY').'-'.uniqid();
+            $reference = $date->format('dmY') . '-' . uniqid();
             $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
             $order->setDelivery($delivery_content);
             $order->setState(0);
-            
+
             $this->entityManager->persist($order);
-            $mug =false;
-         
+            $mug = false;
+            $totalOfMug = 0;
             foreach ($cart->getFull() as $product) {
-                
+
 
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
                 $orderDetails->setProduct($product['product']->getName());
-                $thecategoryiamlookingfor= $this->entityManager->getRepository(Product::class)->findOneBy(array('name'=>$product['product']->getName()));
-                $anothercate= $thecategoryiamlookingfor->getCategory()->getId();
-             
-                if( $anothercate === 5){
-                    $mug = true;
-                }
+                $thecategoryiamlookingfor = $this->entityManager->getRepository(Product::class)->findOneBy(array('name' => $product['product']->getName()));
+                $anothercate = $thecategoryiamlookingfor->getCategory()->getId();
                 $orderDetails->setQuantity($product['quantity']);
+
+                if ($anothercate === 5) {
+                    $mug = true;
+                    $quantityofthatorder = $orderDetails->getQuantity($product['quantity']);
+                    $totalOfMug = $totalOfMug + $quantityofthatorder;
+                }
                 $orderDetails->setprice($product['product']->getPrice());
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
                 $this->entityManager->persist($orderDetails);
-                
             }
-            
-            $carrierss= $this->entityManager->getRepository(Carrier::class)->findAll();
-            if($mug === true  ){
-
+            var_dump($totalOfMug);
+            $carrierss = $this->entityManager->getRepository(Carrier::class)->findAll();
+            if ($mug === true &&  $totalOfMug === 1) {
                 $carriers = $carrierss[0];
-            }else{
+            } else if ($mug === true &&  $totalOfMug === 2) {
+                $carriers = $carrierss[2];
+            } else if ($mug === true &&  $totalOfMug === 3) {
+                $carriers = $carrierss[3];
+            } else if ($mug === true &&  $totalOfMug === 4) {
+                $carriers = $carrierss[4];
+            } else if ($mug === true &&  $totalOfMug === 5) {
+                $carriers = $carrierss[5];
+            } else if ($mug === true &&  $totalOfMug === 10) {
+                $carriers = $carrierss[6];
+            } else {
                 $carriers = $carrierss[1];
             }
             $order->setCarrierName($carriers->getName());
             $order->setCarrierPrice($carriers->getPrice());
             $this->entityManager->flush();
-            
-            
-            
-            
-            
+
+
+
+
+
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
                 'delivery' => $delivery_content,
-                'reference'=>$order->getReference()
-           
+                'reference' => $order->getReference()
+
             ]);
         }
         return $this->redirectToRoute('cart');
